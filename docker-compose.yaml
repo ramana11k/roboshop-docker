@@ -1,0 +1,24 @@
+networks:
+  defaults:
+    external:
+      name: roboshop
+Services:
+  # docker run -d --name mongodb --network roboshop mongodb:v1
+  mongodb:
+    image: mongodb:v1
+    # networks:          # disabling as we have given the network in the root
+    #   - roboshop
+  
+  catalogue:
+    image: catalogue:v1
+    # networks:
+    #   - roboshop
+    depends_on:
+      - mongodb
+
+  web:
+    image: web:v1
+    # networks:
+    #   - roboshop
+    depends_on:
+      - catalogue
