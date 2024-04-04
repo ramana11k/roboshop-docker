@@ -20,5 +20,7 @@ services:
     image: web:v1
     # networks:
     #   - roboshop
+    ports:
+      - "80:80"
     depends_on:
       - catalogue
