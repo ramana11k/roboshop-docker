@@ -24,3 +24,16 @@ services:
       - "80:80"
     depends_on:
       - catalogue
+  
+  redis:
+
+  user:
+    image: user:v1
+    depends_on:
+      - mongodb
+      - redis
+  cart: 
+    image: cart:v1
+    depends_on:
+      - redis      
+      - catalogue
